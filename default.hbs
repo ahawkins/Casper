@@ -28,12 +28,41 @@
         {{!-- The footer at the very bottom of the screen --}}
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}</section>
                 <nav class="site-footer-nav">
-                    <a href="{{@blog.url}}">Latest Posts</a>
-                    {{#if @blog.facebook}}<a href="{{facebook_url @blog.facebook}}" target="_blank" rel="noopener">Facebook</a>{{/if}}
-                    {{#if @blog.twitter}}<a href="{{twitter_url @blog.twitter}}" target="_blank" rel="noopener">Twitter</a>{{/if}}
-                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                    <h4>Free Resources</h4>
+                    <ul>
+                        {{#if @labs.subscribers}}
+                            <li><a href="#subscribe">Newsletter</a></li>
+                        {{/if}}
+                        <li><a href="https://freedevopscourse.com" title="DevOps Intro Course" target="_blank" rel="noopener">DevOps Intro Course</a><li>
+                        <li><a href="https://productsoverprojects.com" title="Projects over Products Course" target="_blank" rel="noopener">Projects Over Products Course</a><li>
+                        <li><a href="/tag/book-review/">The Bookshelf</a></li>
+                        <li><a href="/blog" title="Articles" target="_blank" rel="noopener">Articles</a></li>
+                        <li><a href="/tag/resources" title="Tutorials">Tutorials</a><li>
+                        <li>Making Work Visible Course (Coming Soon)<li>
+                        <li>The Toyota Kata Course (Coming Soon)</li>
+                    </ul>
+                </nav>
+                <nav class="site-footer-nav">
+                    <h4>Paid Services</h4>
+                    <ul>
+                        <li><a href="/call">1-on-1 Consultation</a></li>
+                        <li><a href="/writing">Technical Writing</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="site-footer-nav">
+                    <h4>Extras</h4>
+                    <ul>
+                        <li><a href="/standing-invitation">Standing Invitation</a><li>
+                        {{#if @blog.twitter}}
+                            <li><a href="{{twitter_url @blog.twitter}}" target="_blank" rel="noopener">Twitter</a><li>
+                        {{/if}}
+                        <li><a href="https://github.com/ahawkins" title="Github" target="_blank" rel="noopener">Github</a></li>
+                        <li><a href="https://www.linkedin.com/in/adam-hawkins-53109b14b/" title="LinkedIn" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="https://speakerdeck.com/ahawkins" title="SpeakerDeck" target="_blank" rel="noopener">SpeakerDeck</a></li>
+                        <li>{{@blog.title}}</a> &copy; {{date format="YYYY"}}</li>
+                    </ul>
                 </nav>
             </div>
         </footer>
