@@ -327,20 +327,20 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     height: 1.9rem;
 }
 
+/* This has been customized */
+
 .subscribe-button {
     display: block;
-    padding: 4px 10px;
-    border: #fff 1px solid;
-    color: #fff;
-    font-size: 1.2rem;
-    line-height: 1em;
-    border-radius: 10px;
-    opacity: 0.8;
+    padding: 10px;
+    background-color: color(var(--cta));
+    color: color(var(--white));
+    border-radius: 4px;
+    font-size: 1.5rem;
 }
 
 .subscribe-button:hover {
+    background-color: color(var(--cta) tint(20%));
     text-decoration: none;
-    opacity: 1;
 }
 
 .rss-button {
