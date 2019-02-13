@@ -2264,3 +2264,31 @@ Usage (In Ghost editor):
         margin-left: 0;
     }
 }
+
+/* My customizations */
+/* REF: https://github.com/TryGhost/Ghost/issues/10059 */
+.post.tag-hash-newsletter {
+    display: none
+}
+
+/* Colorful CTA button */
+.cta-button:hover {
+    color: color(var(--white)) !important;
+    background-color: color(var(--cta) tint(20%));
+}
+
+.cta-button {
+    margin: 0 0 1.5em;
+    box-shadow: 1px 1px 2px 1px color(var(--lightgrey)) !important;
+    font-weight: bold;
+    color: color(var(--white)) !important;
+    background-color: color(var(--cta));
+    padding: 20px;
+    border: none;
+    border-radius: 4px;
+    transition: border .25s linear, color .25s linear, background-color .25s linear;
+    display: block;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
