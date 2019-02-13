@@ -2221,7 +2221,7 @@ Usage (In Ghost editor):
 .site-footer {
     position: relative;
     padding-top: 20px;
-    padding-bottom: 60px;
+    padding-bottom: 20px;
     color: #fff;
     background: color(var(--darkgrey) l(-15%));
 }
@@ -2230,7 +2230,7 @@ Usage (In Ghost editor):
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: top;
     color: rgba(255,255,255,0.7);
     font-size: 1.3rem;
 }
@@ -2244,29 +2244,16 @@ Usage (In Ghost editor):
     text-decoration: none;
 }
 
-.site-footer-nav {
-    display: flex;
+.site-footer-nav ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
 }
 
-.site-footer-nav a {
-    position: relative;
-    margin-left: 20px;
-}
-
-.site-footer-nav a:before {
-    content: "";
-    position: absolute;
-    top: 11px;
-    left: -11px;
-    display: block;
-    width: 2px;
-    height: 2px;
-    background: #fff;
-    border-radius: 100%;
-}
-
-.site-footer-nav a:first-of-type:before {
-    display: none;
+.site-footer-nav li {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
 }
 
 @media (max-width: 650px) {
