@@ -26,11 +26,25 @@ var nodemonServerInit = function () {
     livereload.listen(1234);
 };
 
-gulp.task('build', ['css', 'js'], function (/* cb */) {
+gulp.task('build', ['css', 'js', 'hbs'], function (/* cb */) {
     return nodemonServerInit();
 });
 
-gulp.task('generate', ['css', 'js']);
+gulp.task('generate', [ 'css', 'js' ]);
+
+gulp.task('hbs', [ 'partials' ], function () {
+    return gulp.src([ '*.hbs', 'package.json' ])
+        .on('error', swallowError)
+        .pipe(gulp.dest('data/themes/dev/'))
+        .pipe(livereload());
+});
+
+gulp.task('partials', function () {
+    return gulp.src('partials/**/*.hbs')
+        .on('error', swallowError)
+        .pipe(gulp.dest('data/themes/dev/partials/'))
+        .pipe(livereload());
+});
 
 gulp.task('css', function () {
     var processors = [
@@ -47,6 +61,7 @@ gulp.task('css', function () {
         .pipe(postcss(processors))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('assets/built/'))
+        .pipe(gulp.dest('data/themes/dev/assets/built/'))
         .pipe(livereload());
 });
 
@@ -61,11 +76,15 @@ gulp.task('js', function () {
         .pipe(jsFilter.restore)
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('assets/built/'))
+        .pipe(gulp.dest('data/themes/dev/assets/built/'))
         .pipe(livereload());
 });
 
 gulp.task('watch', function () {
     gulp.watch('assets/css/**', ['css']);
+    gulp.watch('*.hbs', ['hbs']);
+    gulp.watch('package.json', ['hbs']);
+    gulp.watch('partials/**/**.hbs', ['partials']);
 });
 
 gulp.task('zip', ['css', 'js'], function () {

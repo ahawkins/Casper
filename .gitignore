@@ -22,3 +22,6 @@ projectFilesBackup
 .DS_Store
 
 dist/
+
+data/themes/dev
+data/logs/
