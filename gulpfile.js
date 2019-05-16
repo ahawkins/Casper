@@ -94,6 +94,7 @@ gulp.task('zip', ['css', 'js'], function () {
 
     return gulp.src([
         '**',
+        '!data', '!data/**',
         '!node_modules', '!node_modules/**',
         '!dist', '!dist/**'
     ])

@@ -1,0 +1,25 @@
+routes:
+  /:
+    data:
+      post: page.newsletter
+      site_owner: author.ghost
+    template:
+      - landing
+
+collections:
+  /newsletter/:
+    permalink: /newsletter/{slug}/
+    filter: "tag:hash-newsletter"
+  /book-review/:
+    permalink: /book-review/{slug}/
+    filter: "tag:book-review"
+  /blog/:
+    permalink: /blog/{year}/{slug}/
+    filter: "tag:-archived"
+    data: author.adam
+    template:
+      - author
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
