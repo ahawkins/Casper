@@ -1,10 +1,11 @@
 {{!< default}}
 
-{{> site-nav}}
+{{^is "home"}}
+    {{> site-nav}}
+{{/is}}
 
-{{!-- Everything inside the #post tags pulls data from the post --}}
-{{#post}}
-    <article class="{{post_class}}">
+<div class="{{post_class}}">
+    {{#post}}
         {{> header background=feature_image}} {{!--Special header.hbs partial to generate the <header> tag--}}
             <div class="container">
                 <div class="section-header-content page-header-content">
@@ -18,16 +19,22 @@
                 <div class="content post-content" id="post-content">{{content}}</div>
             </div>
         </main>
+    {{/post}}
 
-        {{^has slug="about"}}
-            {{#primary_author}}
-                {{> intro-section}}
-            {{/primary_author}}
-        {{/has}}
-    </article>
-{{/post}}
+    {{> subscribe-section}}
 
-{{> subscribe-section}}
+    {{#site_owner}}
+        {{> intro-section}}
+    {{/site_owner}}
+
+    <section class="section section-cta">
+        <div class="container">
+            <div class="content has-text-right">
+                <p class="is-size-4"><a href="/start-here" class="button is-medium is-link">No thanks, I'd like to learn more first. →</a></p>
+            </div>
+        </div>
+    </section>
+</div>
 
 {{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
 {{#contentFor "scripts"}}

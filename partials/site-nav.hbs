@@ -1,21 +1,30 @@
-<nav class="site-nav">
-    <div class="site-nav-left">
-        {{^is "home"}}
-            {{#if @blog.logo}}
-                <a class="site-nav-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="{{@blog.title}}" /></a>
-            {{else}}
-                <a class="site-nav-logo" href="{{@blog.url}}">{{@blog.title}}</a>
-            {{/if}}
-        {{/is}}
+<nav class="navbar is-black" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <span class="navbar-item">{{@blog.title}}</span>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+        </div>
+
         {{#if @blog.navigation}}
-            {{navigation}}
-        {{/if}}
-    </div>
-    <div class="site-nav-right">
-        {{#if @labs.subscribers}}
-            <a class="subscribe-button" href="#subscribe">Newsletter</a>
-        {{else}}
-            <a class="rss-button" href="https://feedly.com/i/subscription/feed/{{@blog.url}}/rss/" title="RSS" target="_blank" rel="noopener">{{> "icons/rss"}}</a>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    {{navigation}}
+                </div>
+
+                {{#if @labs.subscribers}}
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a class="button is-primary" href="/newsletter"><strong>Free Newsletter</strong></a>
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
         {{/if}}
     </div>
 </nav>

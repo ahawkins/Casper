@@ -1,0 +1,19 @@
+{{#if @labs.subscribers}}
+    {{#get "posts" filter="tag:hash-subscribe" limit="1"}}
+        {{#if @blog.cover_image}}
+            <section id="subscribe-section" class="hero is-dark section-subscribe background-cover-image" style="background-image: url({{img_url @blog.cover_image size="l"}});">
+        {{else}}
+            <section id="subscribe-section" class="hero is-dark section-subscribe no-image">
+        {{/if}}
+          <div class="hero-body">
+              <div class="container">
+                {{#foreach posts}}
+                    <p class="title">{{title}}</p>
+                    <div class="subtitle">{{content}}</div>
+                {{/foreach}}
+                {{subscribe_form placeholder="JustShipIt@example.com"}}
+              </div>
+            </section>
+        <div>
+    {{/get}}
+{{/if}}

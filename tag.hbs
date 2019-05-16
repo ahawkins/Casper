@@ -1,28 +1,28 @@
 {{!< default}}
 {{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
+{{> site-nav}}
 
 {{#tag}}
-{{> header background=feature_image}} {{!--Special header.hbs partial to generate the <header> tag--}}
-    <div class="inner">
-        {{> "site-nav"}}
-        <div class="site-header-content">
-            <h1 class="site-title">{{name}}</h1>
-            <h2 class="site-description">
-                {{#if description}}
-                    {{description}}
-                {{else}}
-                    A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
-                {{/if}}
-            </h2>
+    {{> header background=feature_image}} {{!--Special header.hbs partial to generate the <header> tag--}}
+        <div class="container">
+            <div class="section-header-content">
+                <h1 class="title is-size-1">{{name}}</h1>
+                <h2 class="subtitle">
+                    {{#if description}}
+                        {{description}}
+                    {{else}}
+                        A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
+                    {{/if}}
+                </h2>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 {{/tag}}
 
 {{!-- The main content area --}}
-<main id="site-main" class="site-main outer">
-    <div class="inner">
-        <div class="post-feed">
+<main id="site-main" class="section section-feed">
+    <div class="container">
+        <div class="container-feed">
             {{#foreach posts}}
                 {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
                 {{> "post-card"}}

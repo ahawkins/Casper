@@ -1,0 +1,20 @@
+<section class="section section-intro">
+    <div class="container">
+        <div class="content is-clearfix">
+            <h2 class="has-text-centered">Hey, I'm {{name}}</h2>
+            {{#if profile_image}}
+                <a href="{{url}}">
+                    <img class="avatar-profile-image" src="{{profile_image}}" alt="{{name}}" />
+                </a>
+            {{/if}}
+
+            {{#get "posts" limit=1 filter="primary_author:{{slug}}+tag:hash-bio"}}
+                {{#foreach posts}}
+                    {{content}}
+                {{/foreach}}
+            {{else}}
+                <p>{{bio}}</p>
+            {{/get}}
+        </div>
+    </div>
+</section>

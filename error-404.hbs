@@ -11,46 +11,40 @@ It's a good idea to keep this template as minimal as possible in terms of both f
     <title>{{meta_title}}</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset "built/site.css"}}" />
 </head>
 <body class="error-template">
-    <div class="site-wrapper">
-
-        <header class="site-header outer {{#if feature_image}}" style="background-image: url({{feature_image}}){{else}}no-cover{{/if}}">
-            <div class="inner">
-                <nav class="site-nav-center">
-                    {{#if @blog.logo}}
-                        <a class="site-nav-logo" href="{{@blog.url}}"><img src="{{img_url @blog.logo size="xs"}}" alt="{{@blog.title}}" /></a>
-                    {{else}}
-                        <a class="site-nav-logo" href="{{@blog.url}}">{{@blog.title}}</a>
-                    {{/if}}
-                </nav>
+    <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="{{@blog.url}}">{{@blog.title}}</a>
             </div>
-        </header>
+        </div>
+    </nav>
 
-        <main id="site-main" class="site-main outer">
-            <div class="inner">
-
-                <section class="error-message">
-                    <h1 class="error-code">{{code}}</h1>
-                    <p class="error-description">{{message}}</p>
-                    <a class="error-link" href="{{@blog.url}}">Go to the front page →</a>
-                </section>
+    <section class="hero is-light hero-error">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">{{code}}</h1>
+                <h2 class="subtitle">{{message}}</h2>
+                <p><a class="error-link" href="{{@blog.url}}">Go to the front page →</a></p>
             </div>
-        </main>
+        </div>
+    </section>
 
-        {{#get "posts" limit="3"}}
-        <aside class="outer">
-            <div class="inner">
-                <div class="post-feed">
-                    {{#foreach posts}}
-                        {{> "post-card"}}
-                    {{/foreach}}
+    {{#get "posts" limit="3" filter="tag:-hash-internal"}}
+        {{#if posts}}
+            <section class="section section-read-more">
+                <div class="container">
+                    <div class="container-feed">
+                        {{#foreach posts}}
+                            {{> "post-card"}}
+                        {{/foreach}}
+                    </div>
                 </div>
-            </div>
-        </aside>
-        {{/get}}
-
-    </div>
+            </section>
+        {{/if}}
+    {{/get}}
 </body>
 </html>
